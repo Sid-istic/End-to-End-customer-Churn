@@ -23,7 +23,7 @@ To build an ML model that accurately predicts customer churn, helping businesses
 
 ## 📂 Project Structure
 Customer_Churn_Prediction/
-├── data/ # Raw & processed data
+├── data/ # Raw & processed data /n
 ├── models/ # Saved ML models
 ├── notebooks/ # Jupyter notebooks
 ├── app/ # Deployment scripts (Flask/Django)
