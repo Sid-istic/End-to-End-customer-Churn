@@ -3,7 +3,7 @@
 This folder contains datasets used in the Customer Churn Prediction project.
 
 ## Files:
-- **customer_churn.csv**: Sample dataset with 19 features used for model training and testing.
+- **customer_churn_sample.csv**: Sample dataset with 19 features used for model training and testing.
 - **customer_churn_cleaned.csv** : Processed data after cleaning and feature engineering.
 
 ## Features:
