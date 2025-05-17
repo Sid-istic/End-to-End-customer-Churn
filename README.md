@@ -16,7 +16,7 @@ To build an ML model that accurately predicts customer churn, helping businesses
 - Python (Pandas, NumPy, Matplotlib, Seaborn)
 - Scikit-learn (Logistic Regression, Random Forest, SVM, etc.)
 - Pickle (Model saving)
-- Jupyter Notebook
+- Google Colab
 - Git & GitHub for version control
 
 ---
