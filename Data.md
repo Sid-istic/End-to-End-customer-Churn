@@ -31,5 +31,3 @@ This folder contains datasets used in the Customer Churn Prediction project.
 
 ## Source:
 - https://www.kaggle.com/datasets/blastchar/telco-customer-churn
-
-
