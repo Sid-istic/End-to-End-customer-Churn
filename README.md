@@ -47,7 +47,7 @@ Customer_Churn_Prediction/<br>
 
 ## 🛠️ Current Results
 - Model Used: **Random Forest Classifier**
-- Accuracy Achieved: **77.5%** (replace with your score)
+- Accuracy Achieved: **77.5%** 
 - Cross-validation Score: **84%**
 
 ---
