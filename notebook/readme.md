@@ -84,7 +84,7 @@ The objective of this project is to build a machine learning model that predicts
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/your-username/customer-churn-prediction.git
+   git clone https://github.com/Sid-istic/End-to-End-customer-Churn.git
    ```
 
 2. Run the notebooks in order:
