@@ -100,7 +100,7 @@ The objective of this project is to build a machine learning model that predicts
 
 ## 📂 Data
 
-> The dataset used for this project is anonymized and contains customer demographics, service usage, and churn status. (You can mention the source if it's from Kaggle or your own data.)
+> The dataset used for this project is anonymized and contains customer demographics, service usage, and churn status from kaggle (source mention in main readme)
 
 ---
 
