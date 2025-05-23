@@ -11,7 +11,7 @@ This repository contains a complete pipeline for feature engineering, model refi
 - **Purpose**: Performed advanced feature engineering.
 - **What was done**:
   - Created a new feature: `Tenure_Monthly` = `tenure` × `MonthlyCharges`.
-  - Applied **OneHotEncoding** to categorical columns.
+  - Applied **LabelEncoding** to categorical columns.
   - Trained a baseline RandomForest model using the new encoded dataset.
 - **Outcome**: Slight improvement in model performance and better feature representation.
 
