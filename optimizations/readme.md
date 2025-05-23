@@ -35,7 +35,7 @@ This repository contains a complete pipeline for feature engineering, model refi
 - **What was done**:
   - Used `RandomizedSearchCV` on the reduced feature set.
   - Tuned key parameters like `n_estimators`, `max_depth`, `min_samples_split`, `min_samples_leaf`, `max_features`, and `bootstrap`.
-  - Trained and evaluated the optimized model.
+  - Trained and evaluated the optimized model which was saved by the name `bets_model.pkl` and is available in models folder.
 - **Final Accuracy**:
   - **Training Accuracy**: Increased from **79.84.0%** ➝ **84.86%**
   - **Test Accuracy**: Increased from **77.7%** ➝ **80.34%**
