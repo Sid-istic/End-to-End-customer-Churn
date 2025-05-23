@@ -40,6 +40,8 @@ if st.button("Predict"):
                     "PaperlessBilling": PaperlessBilling,
                     "MonthlyCharges": MonthlyCharges,
                     "Tenure_Monthly": Tenure_Monthly}
+
+    
     # Convert input data to DataFrame
     input_df = pd.DataFrame([input_data])
     st.write("Input DataFrame:")
@@ -66,7 +68,7 @@ if st.button("Predict"):
     prediction = model.predict(input_df)
     prediction_proba = model.predict_proba(input_df)[:, 1]
     st.write("Prediction:")
-    if prediction[0] == 1:
+    if prediction[0] == 0:
         st.success("The customer is likely to churn.")
     else:
         st.success("The customer is unlikely to churn.")
