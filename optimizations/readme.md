@@ -37,8 +37,9 @@ This repository contains a complete pipeline for feature engineering, model refi
   - Tuned key parameters like `n_estimators`, `max_depth`, `min_samples_split`, `min_samples_leaf`, `max_features`, and `bootstrap`.
   - Trained and evaluated the optimized model which was saved by the name `best_model.pkl` and is available in models folder.
 - **Final Accuracy**:
-  - **Training Accuracy**: Increased from **79.84.0%** ➝ **84.86%**
-  - **Test Accuracy**: Increased from **77.7%** ➝ **80.34%**
+  - **Training Accuracy**: with best parameters➝ **84.86%**
+  - **Test Accuracy**: Increased from **77.39%** ➝ **77.76%** after feature Engineering
+  - **Test Accuracy**: Increased from **77.76** ➝ **79.03%** after model optimization
 
 ---
 
