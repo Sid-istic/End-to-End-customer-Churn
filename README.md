@@ -26,6 +26,7 @@ Customer_Churn_Prediction/<br>
 ├── data/ # Raw & processed data <br>
 ├── models/ # Saved ML models<br>
 ├── notebooks/ # Jupyter notebooks<br>
+├── optimizations/ # Jupyter notebooks<br>
 ├── app/ # Deployment scripts (Flask/Django)<br>
 ├── docs/ # Documentation & reports<br>
 └── README.md # This file<br>
@@ -47,16 +48,14 @@ Customer_Churn_Prediction/<br>
 
 ## 🛠️ Current Results
 - Model Used: **Random Forest Classifier**
-- Accuracy Achieved: **77.5%** 
+- Accuracy Achieved: **77.7%** on test Data
 - Cross-validation Score: **84%**
 
 ---
 
 ## 🚀 Upcoming Improvements (Phase 2 & Phase 3)
-- Phase 2: **Web App Deployment using Flask**
-- Phase 3: **NLP-based Customer Feedback Analysis**
-- Phase 3: **Dashboard for Churn Analytics**
-- Hyperparameter Tuning & Model Optimization
+- Phase 2: **Hyperparameter Tuning & Model Optimization** Done ✅
+- Phase 3: **Web App development using Streamlit**
 - Scalability enhancements (CI/CD, Cloud hosting)
 
 ---
