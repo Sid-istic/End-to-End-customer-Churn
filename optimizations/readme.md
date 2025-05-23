@@ -24,7 +24,7 @@ This repository contains a complete pipeline for feature engineering, model refi
   - Used the one-hot encoded dataset from step 1.
   - Identified the most impactful features using `.feature_importances_` from the trained model.
   - Dropped all features with importance < `0.03`.
-  - Saved the reduced and optimized dataset as `new_training_data.csv`.
+  - Saved the reduced and optimized dataset as `new_training_data.csv`(can be found in data folder).
 - **Outcome**: Cleaner dataset with less noise and better interpretability.
 
 ---
