@@ -153,7 +153,7 @@ with st.expander("Upload a CSV file 📂"):
 st.write("### About")
 st.write("This app is built using Streamlit and uses a machine learning model to predict customer churn.")
 st.write("### Accuracy")
-st.write("The model has an accuracy of **80.41%** 🗿 on the test set.")
+st.write("The model has an accuracy of **82.85%** 🗿 on the test set.")
 st.write("### Contact")
 st.write("For any questions or feedback, please contact us at: [ siddharthsingh10454@gmail.com ]")
 st.write("made with ❤️ by Siddharth Singh")
