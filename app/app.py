@@ -16,11 +16,11 @@ with open("app/label_encoders.pkl", "rb") as f:
 with open("app/scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
-    st.title("Customer Churn Prediction")
+    st.title("Customer Churn Prediction 🏃‍➡️")
     st.write("This app predicts whether a customer will churn based on their profile and usage data.")
 
 
-with st.expander("Give Custom Inputs"):
+with st.expander("Give Custom Inputs ⌨️"):
     gender = st.selectbox("Gender", ["Male", "Female"])
     Partner = st.selectbox("Partner", ["Yes", "No"])
     Dependents = st.selectbox("Dependents", ["Yes", "No"])
@@ -83,7 +83,7 @@ with st.expander("Give Custom Inputs"):
             st.success("The customer is unlikely to churn.")
 
 
-with st.expander("Upload a CSV file"):
+with st.expander("Upload a CSV file 📂"):
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
         # Read the CSV file
@@ -115,11 +115,12 @@ with st.expander("Upload a CSV file"):
                 st.warning(f"Label encoder for {col} not found. Skipping encoding.")
 
         # Scale the data
-        data["Tenure_Monthly"] = data["TotalCharges"]
-        data = data.drop(columns=["TotalCharges"] , axis = 1)
-        data["Tenure_Monthly"] = data["Tenure_Monthly"].replace(" ", 0)
-        data["Tenure_Monthly"] = data["Tenure_Monthly"].astype(float)
-        data['Tenure_Monthly'] = scaler.transform(data['Tenure_Monthly'].values.reshape(-1, 1))
+        if "TotalCharges" in data.columns:
+            data["Tenure_Monthly"] = data["TotalCharges"]
+            data = data.drop(columns=["TotalCharges"] , axis = 1)
+            data["Tenure_Monthly"] = data["Tenure_Monthly"].replace(" ", 0)
+            data["Tenure_Monthly"] = data["Tenure_Monthly"].astype(float)
+            data['Tenure_Monthly'] = scaler.transform(data['Tenure_Monthly'].values.reshape(-1, 1))
         if st.button("Predict",key="predict_button_2"):
             st.write("Encoded DataFrame:")
             st.write(data)
@@ -141,6 +142,8 @@ with st.expander("Upload a CSV file"):
 
 st.write("### About")
 st.write("This app is built using Streamlit and uses a machine learning model to predict customer churn.")
+st.write("### Accuracy")
+st.write("The model has an accuracy of **80.41%** 🗿 on the test set.")
 st.write("### Contact")
 st.write("For any questions or feedback, please contact us at: [ siddharthsingh10454@gmail.com ]")
 st.write("made with ❤️ by Siddharth Singh")
