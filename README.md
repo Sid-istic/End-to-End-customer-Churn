@@ -56,7 +56,7 @@ Customer_Churn_Prediction/<br>
 
 ---
 
-## 🚀 Upcoming Improvements (Phase 2 & Phase 3)
+## 🚀 Improvements (Phase 2 & Phase 3)
 - Phase 2: **Hyperparameter Tuning & Model Optimization** Done ✅
 - Phase 3: **Web App development using Streamlit** Done ✅
 
