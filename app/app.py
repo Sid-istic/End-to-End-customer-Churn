@@ -2,8 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-with open("app/bestest_model.pkl", "rb") as f:
+import gzip
+with gzip.open("app/bestest_model.pkl.gz", "rb") as f:
     model = pickle.load(f)
+
 
 with open("app/encoder.pkl", "rb") as f:
     label_encoders = pickle.load(f)
