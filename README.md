@@ -48,14 +48,14 @@ Customer_Churn_Prediction/<br>
 
 ## 🛠️ Current Results
 - Model Used: **Random Forest Classifier**
-- Accuracy Achieved: **77.7%** on test Data
-- Cross-validation Score: **84%**
+- Accuracy Achieved: **80.41%** on test Data
+- Cross-validation Score: **84.7%**
 
 ---
 
 ## 🚀 Upcoming Improvements (Phase 2 & Phase 3)
 - Phase 2: **Hyperparameter Tuning & Model Optimization** Done ✅
-- Phase 3: **Web App development using Streamlit**
+- Phase 3: **Web App development using Streamlit** Done ✅
 - Scalability enhancements (CI/CD, Cloud hosting)
 
 ---
