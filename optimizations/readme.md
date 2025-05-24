@@ -38,8 +38,8 @@ This repository contains a complete pipeline for feature engineering, model refi
   - Trained and evaluated the optimized model which was saved by the name `best_model.pkl` and is available in models folder.
 - **Final Accuracy**:
   - **Training Accuracy**: with best parameters➝ **84.86%**
-  - **Test Accuracy**: Increased from **77.39%** ➝ **77.76%** after feature Engineering
-  - **Test Accuracy**: Increased from **77.76** ➝ **80.41%** after model optimization
+  - **Test Accuracy**: Increased from **77.39%** ➝ **81.97%** after feature Engineering
+  - **Test Accuracy**: Increased from **81.97** ➝ **82.85%** after model optimization
 
 ---
 
