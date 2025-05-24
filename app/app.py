@@ -7,13 +7,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-with open("best_model.pkl", "rb") as f:
+with open("app/best_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open("label_encoders.pkl", "rb") as f:
+with open("app/label_encoders.pkl", "rb") as f:
     label_encoders = pickle.load(f)
 
-with open("scaler.pkl", "rb") as f:
+with open("app/scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
     st.title("Customer Churn Prediction")
