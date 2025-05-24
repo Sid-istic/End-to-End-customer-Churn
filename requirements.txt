@@ -1,5 +1,0 @@
-Streamlit
-Pandas
-Numpy
-Matplotlibs
-Scikit-learn
