@@ -2,15 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-
-
-with open("app/best_model.pkl", "rb") as f:
+with open("app/bestest_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open("app/label_encoders.pkl", "rb") as f:
+with open("app/encoder.pkl", "rb") as f:
     label_encoders = pickle.load(f)
 
-with open("app/scaler.pkl", "rb") as f:
+with open("app/scale.pkl", "rb") as f:
     scaler = pickle.load(f)
 
     st.title("Customer Churn Prediction 🏃‍➡️")
@@ -19,36 +17,31 @@ with open("app/scaler.pkl", "rb") as f:
 
 with st.expander("Give Custom Inputs ⌨️"):
     gender = st.selectbox("Gender", ["Male", "Female"])
-    Partner = st.selectbox("Partner", ["Yes", "No"])
-    Dependents = st.selectbox("Dependents", ["Yes", "No"])
-    tenure = st.slider("Tenure (in months)", 0, 72, 0)
-    # Convert tenure to months
-    tenure = int(tenure)
+    Tenure = st.slider("Tenure (in months)", min_value=0, max_value=72, value=12)
+    InternetService = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
     OnlineSecurity = st.selectbox("Online Security", ["Yes", "No"])
-    OnlineBackup = st.selectbox("Online Backup", ["Yes", "No"])
-    DeviceProtection = st.selectbox("Device Protection", ["Yes", "No"])
     TechSupport = st.selectbox("Tech Support", ["Yes", "No"])
     Contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
-    PaperlessBilling = st.selectbox("Paperless Billing", ["Yes", "No"])
-    MonthlyCharges = st.number_input("Monthly Charges", min_value=0.0, max_value=1000.0, value=0.0)
-    Tenure_Monthly = tenure*MonthlyCharges
+    PaymentMethod = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
+    MonthlyCharges = st.number_input("Monthly Charges", min_value=0.0, max_value=100.0, value=50.0, step=0.01)
+    TotalCharges = st.number_input("Total Charges", min_value=0.0, max_value=10000.0, value=500.0, step=0.01)
+    Tenure_Monthly = Tenure * MonthlyCharges
+
     
 
 
     if st.button("Predict",key = "predict_button_1"):
         # Preprocess the input data
-        input_data ={"gender": gender,
-                        "Partner": Partner,
-                        "Dependents": Dependents,
-                        "tenure": tenure,
+        input_data ={"tenure": Tenure,
+                        "InternetService": InternetService,
                         "OnlineSecurity": OnlineSecurity,
-                        "OnlineBackup": OnlineBackup,
-                        "DeviceProtection": DeviceProtection,
                         "TechSupport": TechSupport,
                         "Contract": Contract,
-                        "PaperlessBilling": PaperlessBilling,
+                        "PaymentMethod": PaymentMethod,
                         "MonthlyCharges": MonthlyCharges,
-                        "Tenure_Monthly": Tenure_Monthly}
+                        "TotalCharges": TotalCharges,
+                        "Tenure_Monthly": Tenure_Monthly,
+                        "gender": gender}
         # Convert input data to DataFrame
         input_df = pd.DataFrame([input_data])
         st.write("Input DataFrame:")
@@ -63,7 +56,12 @@ with st.expander("Give Custom Inputs ⌨️"):
 
 
         # Scale the input data
-        input_df["Tenure_Monthly"] = scaler.transform([[input_df["Tenure_Monthly"].values[0]]])[0]
+        numeric_colums = ['tenure', 'MonthlyCharges','Tenure_Monthly' , 'TotalCharges']
+        for col in numeric_colums:
+            if col in input_df.columns:
+                input_df[col] = scaler[col].transform(input_df[col].values.reshape(-1,1))
+            else:
+                st.warning(f"Scaler for {col} not found. Skipping scaling.")
 
 
         st.write("Encoded DataFrame:")
@@ -74,7 +72,7 @@ with st.expander("Give Custom Inputs ⌨️"):
         prediction = model.predict(input_df)
         prediction_proba = model.predict_proba(input_df)[:, 1]
         st.write("Prediction:")
-        if prediction[0] == 0: 
+        if prediction == 1: 
             st.success("The customer is likely to churn.")
         else:
             st.success("The customer is unlikely to churn.")
@@ -91,17 +89,23 @@ with st.expander("Upload a CSV file 📂"):
             data.drop("customerID", axis=1, inplace=True)
         if "Churn" in data.columns:
             data.drop("Churn", axis=1, inplace=True)
-        useless_columns = ['SeniorCitizen',
+        useless_columns = ['gender',
+                            'SeniorCitizen',
+                            'Partner',
+                            'Dependents',
                             'PhoneService',
                             'MultipleLines',
-                            'InternetService',
+                            'OnlineBackup',
+                            'DeviceProtection',
                             'StreamingTV',
                             'StreamingMovies',
-                            'PaymentMethod']
+                            'PaperlessBilling']
+        data_gender = data['gender'].replace({'Male' : 1 , 'Female' : 0})
         
         for col in useless_columns:
             if col in data.columns:
                 data.drop(col, axis=1, inplace=True)
+        data['Tenure_Monthly'] = data['tenure'] * data['MonthlyCharges']
 
         # Preprocess the data
         categorical_columns = data.select_dtypes(include=['object']).columns
@@ -112,12 +116,19 @@ with st.expander("Upload a CSV file 📂"):
                 st.warning(f"Label encoder for {col} not found. Skipping encoding.")
 
         # Scale the data
-        if "TotalCharges" in data.columns:
-            data["Tenure_Monthly"] = data["TotalCharges"]
-            data = data.drop(columns=["TotalCharges"] , axis = 1)
-            data["Tenure_Monthly"] = data["Tenure_Monthly"].replace(" ", 0)
-            data["Tenure_Monthly"] = data["Tenure_Monthly"].astype(float)
-            data['Tenure_Monthly'] = scaler.transform(data['Tenure_Monthly'].values.reshape(-1, 1))
+        numeric_colums = ['tenure', 'MonthlyCharges','Tenure_Monthly' , 'TotalCharges']
+        data['TotalCharges'] = pd.to_numeric(data['TotalCharges'], errors='coerce')
+        data['TotalCharges'] = data['TotalCharges'].fillna(0)
+        for col in numeric_colums:
+            if col in data.columns:
+                data[col] = scaler[col].transform(data[col].values.reshape(-1,1))
+            else:
+                st.warning(f"Scaler for {col} not found. Skipping scaling.")
+
+        # Check if the DataFrame is empty after preprocessing
+        data['gender'] = data_gender
+        if data.empty:
+            st.error("The uploaded file does not contain valid data for prediction. Please check the file and try again.")
         if st.button("Predict",key="predict_button_2"):
             st.write("Encoded DataFrame:")
             st.write(data)
@@ -131,8 +142,8 @@ with st.expander("Upload a CSV file 📂"):
             for i in range(len(predictions)):
                 if predictions[i] == 0:
                     j += 1
-            st.success(f"Number of customers likely to churn: {j}")
-            st.success(f"Number of customers unlikely to churn: {len(predictions)-j}")
+            st.success(f"Number of customers likely to churn: {len(predictions)-j}")
+            st.success(f"Number of customers unlikely to churn: {j}")
             st.write("Prediction Probabilities:")
             st.write(prediction_proba)
 
