@@ -16,6 +16,7 @@ To build an ML model that accurately predicts customer churn, helping businesses
 - Python (Pandas, NumPy, Matplotlib, Seaborn)
 - Scikit-learn (Logistic Regression, Random Forest, SVM, etc.)
 - Pickle (Model saving)
+- Gzip(compress large files)
 - Google Colab
 - Git & GitHub for version control
 
@@ -28,7 +29,6 @@ Customer_Churn_Prediction/<br>
 ├── notebooks/ # Jupyter notebooks<br>
 ├── optimizations/ # Jupyter notebooks<br>
 ├── app/ # Deployment scripts (Flask/Django)<br>
-├── docs/ # Documentation & reports<br>
 └── README.md # This file<br>
 
 
@@ -48,15 +48,17 @@ Customer_Churn_Prediction/<br>
 
 ## 🛠️ Current Results
 - Model Used: **Random Forest Classifier**
-- Accuracy Achieved: **80.41%** on test Data
+## 🌄 Before Optimizations :
+- Accuracy Achieved: **77.76%** on test Data
 - Cross-validation Score: **84.7%**
+## 🌅 After Optimizations :
+- Accuracy Achieved: **82.85** on test Data
 
 ---
 
 ## 🚀 Upcoming Improvements (Phase 2 & Phase 3)
 - Phase 2: **Hyperparameter Tuning & Model Optimization** Done ✅
 - Phase 3: **Web App development using Streamlit** Done ✅
-- Scalability enhancements (CI/CD, Cloud hosting)
 
 ---
 
