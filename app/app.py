@@ -148,6 +148,16 @@ with st.expander("Upload a CSV file 📂"):
             st.success(f"Number of customers unlikely to churn: {j}")
             st.write("Prediction Probabilities:")
             st.write(prediction_proba)
+with st.expander("About Dataset 📄"):
+        st.write("The Dataset was obtained from Kaggle and contains information about customer churn in a telecom company.")
+        st.write("### Source:")
+        st.write("[Kaggle Customer Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)")
+        st.write("### Description:")
+        st.write("The dataset contains information about customers, including their demographics, service usage, and whether they have churned or not.")
+        st.write("The dataset has been preprocessed to remove unnecessary columns and encode categorical variables.")
+        st.write("the data has 7704 rows and 21 columns and was highly imbalanced.")
+
+
 
 
 st.write("### About")
