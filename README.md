@@ -52,7 +52,7 @@ Customer_Churn_Prediction/<br>
 - Accuracy Achieved: **77.76%** on test Data
 - Cross-validation Score: **84.7%**
 ## 🌅 After Optimizations :
-- Accuracy Achieved: **82.85** on test Data
+- Accuracy Achieved: **82.85%** on test Data
 
 ---
 
