@@ -39,7 +39,7 @@ This repository contains a complete pipeline for feature engineering, model refi
 - **Final Accuracy**:
   - **Training Accuracy**: with best parameters➝ **84.86%**
   - **Test Accuracy**: Increased from **77.39%** ➝ **77.76%** after feature Engineering
-  - **Test Accuracy**: Increased from **77.76** ➝ **79.03%** after model optimization
+  - **Test Accuracy**: Increased from **77.76** ➝ **80.41%** after model optimization
 
 ---
 
